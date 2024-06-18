@@ -16,10 +16,10 @@ limitations under the License.
 
 import gettext
 import sys
+from importlib import metadata
 from os.path import dirname
 from typing import List
 
-import pkg_resources
 
 """path to pip package"""
 sys.path.append(dirname(__file__))
@@ -100,7 +100,7 @@ def main():
 def check_diagram_version(diagram):
     if diagram:
         # Checking diagram version. Must be 0.13 or higher
-        if pkg_resources.get_distribution("diagrams").version < "0.14":
+        if metadata.version("diagrams") < "0.14":
             exit_critical(
                 "You must update diagrams package to 0.14 or higher. "
                 "- See on https://github.com/mingrammer/diagrams"
